@@ -54,9 +54,9 @@ RUN s6tar=$(find /tmp -name "s6-overlay-*.tar.gz") \
 
 # Install octoprint
 RUN	curl -fsSLO --compressed --retry 3 --retry-delay 10 \
-  https://github.com/OctoPrint/OctoPrint/archive/${octoprint_ref}.tar.gz \
+  https://github.com/khlam/OctoPrint/archive/dev.tar.gz \
 	&& mkdir -p /opt/octoprint \
-  && tar xzf ${octoprint_ref}.tar.gz --strip-components 1 -C /opt/octoprint --no-same-owner
+  && tar xzf dev.tar.gz --strip-components 1 -C /opt/octoprint --no-same-owner
 
 WORKDIR /opt/octoprint
 RUN pip install .
@@ -64,7 +64,7 @@ RUN mkdir -p /octoprint/octoprint /octoprint/plugins
 
 # Install mjpg-streamer
 RUN curl -fsSLO --compressed --retry 3 --retry-delay 10 \
-  https://github.com/jacksonliam/mjpg-streamer/archive/master.tar.gz \
+  https://github.com/khlam/mjpg-streamer/archive/master.tar.gz \
   && mkdir /mjpg \
   && tar xzf master.tar.gz -C /mjpg
 

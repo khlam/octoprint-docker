@@ -2,13 +2,13 @@ version: '2.4'
 
 services:
   octoprint:
-    image: octoprint/octoprint
+    build: .
     restart: unless-stopped
     ports:
       - 80:80
-    # devices:
+    devices:
     # use `python -m serial.tools.miniterm` to see what the name is of the printer, this requires pyserial
-    #  - /dev/ttyACM0:/dev/ttyACM0
+      - /dev/ttyACM0:/dev/ttyACM0
     #  - /dev/video0:/dev/video0
     volumes:
      - octoprint:/octoprint
@@ -16,6 +16,7 @@ services:
     # you add a video device
     #environment:
     #  - ENABLE_MJPG_STREAMER=true
+    #  - MJPG_STREAMER_INPUT=-y -n -r 1920x1080
   
   ####
   # uncomment if you wish to edit the configuration files of octoprint
